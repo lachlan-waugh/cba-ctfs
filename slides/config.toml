@@ -1,0 +1,13 @@
+title = "TEMPLATE"
+languageCode = "en-au"
+
+relativeURLs = true
+theme = "reveal-hugo"
+
+[markup.goldmark.rendered]
+unsafe = true
+
+[outputFormats.Reveal]
+baseName = "index"
+mediaType = "text/html"
+isHTML = true
