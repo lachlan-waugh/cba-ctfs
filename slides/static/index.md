@@ -1,5 +1,5 @@
 ## slides
-* [week-01](/1234/week01)
+* [week-01](/cba-ctfs/week01)
 
 &nbsp;
 
