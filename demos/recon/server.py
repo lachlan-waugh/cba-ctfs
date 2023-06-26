@@ -1,48 +1,55 @@
-from flask import Flask
+from flask import Flask, render_template, request
+import db
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
+    if request.method == 'POST':
+        db.add_comment(request.form['comment'])
+
+    query = request.args.get('q')
+    return render_template('index.html', comments=db.get_comments(query), query=query)
 
 @app.route('/admin')
 def a():
+    return 'you found me :)'
 
 @app.route('/testing')
 def b():
+    return 'you found me :)'
 
 @app.route('/dev')
 def c():
+    return 'you found me :)'
 
-@app.route('/api')
+@app.route('/update')
 def d():
+    return 'you found me :)'
 
-@app.route('/secret')
+@app.route('/upload')
 def e():
+    return 'you found me :)'
 
-@app.route('/zoom_minus')
+@app.route('/files')
 def f():
+    return 'you found me :)'
 
-@app.route('/eic')
+@app.route('/login')
 def g():
+    return 'you found me :)'
 
-@app.route('/alto')
+@app.route('/logout')
 def h():
+    return 'you found me :)'
 
-@app.route('/vorteile')
+@app.route('/image')
 def i():
+    return 'you found me :)'
 
-@app.route('/cuba')
+@app.route('/config')
 def j():
-
-@app.route('/gnu')
-def k():
-
-@app.route('/placeholders')
-def l():
-
-@app.route('/Organizations')
-def m():
+    return 'you found me :)'
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='127.0.0.1', port=80)

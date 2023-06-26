@@ -1,1 +1,6 @@
-127.0.0.1 website.com blogsearch_feeds.website.com style.website.com pso.website.com contacto.website.com sage.website.com 2236.website.com living_room.website.com adhoc.website.com test2.website.com forgot-password.website.com 
+## TODO
+/usr/share/seclists/Discovery/Web-Content/raft-small-words.txt
+
+ 127.0.0.1 website.com logs.website.com api.website.com dev.website.com testing.website.com secret.website.com help.website.com upload.website.com download.website.com account.website.com docs.website.com
+
+gobuster dir -u http://website.com -w /usr/share/seclists/Discovery/Web-Content/raft-small-words.txt
