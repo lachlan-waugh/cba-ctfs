@@ -178,6 +178,13 @@ if __name__ == '__main__':
 
 ---
 
+### a side note
+* ctfs are hard: they aren't intuitive and they take a long time
+* at some point, everyone was where you are now
+* there's more resources out there (youtube videos, ctf/cve writeups) than you could read/watch in 10 lifetimes (hopefully that's not too daunting)
+
+---
+
 ### resources
 * ctfs
     * [ringzer0](https://ringzer0ctf.com/challenges), [juice-shop](https://owasp.org/www-project-juice-shop/), [picoctf](https://picoctf.org/index.html#picogym), [pheonix](https://exploit.education/phoenix/) 
@@ -199,7 +206,7 @@ if __name__ == '__main__':
 ---
 
 ## what is recon
-* these are the first steps
+* these should always be your first steps
 * essentially everything that isn't exploitation
     * looking at a website
     * reading the html source
@@ -224,7 +231,7 @@ if __name__ == '__main__':
 ---
 
 ## demo
-> picoctf
+> website.com (don't try it at home)
 
 ---
 
@@ -239,7 +246,13 @@ if __name__ == '__main__':
 
 ## subdomain/subdirectory/port
 * subdirectory: another part of the same site
-* subdomain/port: another application
+    * gobuster, dirbuster, etc
+* subdomain: another server
+    * also gobuster, dirbuster
+* port: another application
+    * nmap
+ 
+> [seclists](https://github.com/danielmiessler/SecLists) and [wordlists](https://github.com/kkrypt0nn/wordlists) can be helpful wordlists
 
 ---
 
