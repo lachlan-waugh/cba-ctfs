@@ -20,7 +20,7 @@
     {% if not query %}
       <h3>Showing all comments:</h3>
     {% else %}
-      <h3>Showing comments containing "{{ query }}":</h3>
+      <h3>Showing comments containing "{{ query | safe }}":</h3>
     {% endif %}
 
     {% for comment in comments %}
