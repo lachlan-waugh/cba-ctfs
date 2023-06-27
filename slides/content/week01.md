@@ -15,9 +15,8 @@ outputs: ["Reveal"]
 ---
 
 ## disclaimer
-* a lot of the tools and techniques discussed in these sessions could be used against real websites and infrastructure
-* don't do that
-* dont be mean
+* many of the tools and techniques discussed in these sessions could be used against real websites/applications
+* this is quite 
 
 ---
 
@@ -78,6 +77,11 @@ outputs: ["Reveal"]
 {{% section %}}
 
 ## what type of vulnerabilities might you exploit?
+* poor access control
+* authentication/authorization issues
+* **injection vulnerabilities** <-- the cool ones
+* weak cryptography
+* security miconfigurations
 
 ---
 
