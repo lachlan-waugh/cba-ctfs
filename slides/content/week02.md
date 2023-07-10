@@ -21,8 +21,8 @@ outputs: ["Reveal"]
 
 ---
 
-## HTML injection
 {{% section %}}
+
 ### HTML injection
 * Browsers just render the DOM
 * How would it know if tags are user-supplied or server-supplied
@@ -39,13 +39,13 @@ outputs: ["Reveal"]
 
 ---
 
-## XSS
 {{% section %}}
-### Cross-site scripting
+
+### XSS (cross-site scripting)
 * another 'mixing of data and control' issue
+    * your browser only receives a single stream of data
+    * the content of the stream determines if it's control or data
 * Tricking a **browser** into executing your code
-    * javascript, php, py-script?
-    * we'll just be looking at javascript lol
 
 ---
 
@@ -122,7 +122,7 @@ const a = '<user_input>'
 ###
 
 ```
-<form method="POST" >
+<form method="POST">
 ```
 
 ---
