@@ -4,20 +4,32 @@ layout: "bundle"
 outputs: ["Reveal"]
 ---
 
-## We'll get started at ??:05
+## We'll get started at 13:05
 
 ---
 
 {{< slide class="center" >}}
-# Week02
-### T12A COMP1234 
+# week02
+### client-side exploitation
+
+---
+
+## disclaimer
+* many of the tools and techniques discussed in these sessions could be used against real websites/applications
+* don't do that
+
+---
+
+## acknowledgement of country
+* We begin by acknowledging the Traditional Custodians of the land on which we meet, and pay our respects to their Elders past and present. We extend that arespect to Aboriginal and Torres Strait Islander peoples here today.
 
 ---
 
 ## Client-side injection
 * HTML Injection
 * XSS
-* CSRF
+* CSRF\
+* Clickjacking
 
 ---
 
@@ -86,7 +98,7 @@ document.write(document.URL.substring(pos,document.URL.length));
 ```javascript
 // event-handlers
 <img src=x onerror=alert(1)/>
- 
+
 // injecting into javascript code
 const a = '<user_input>'
 
@@ -115,11 +127,10 @@ const a = '<user_input>'
 * Trick a user into performing an unintended action
     * e.g. make them authorize a bank transaction
     * e.g. make them change their email/password
-* *kinda similar to SSRF*
 
 ---
 
-###
+### examples
 
 ```
 <form method="POST">
@@ -131,8 +142,31 @@ const a = '<user_input>'
 
 {{% /section %}}
 
+---
+
+## Click-jacking
+{{% section %}}
+* A fake form sitting under a real form
+
+* if you try to interact with the fake form, you'll accidentally interact with the real one. 
+
+* This could be either local, or external
+    * local: same form switch confirm/cancel buttons
+    * external: an invisible iframe with a higher z-index
 
 ---
 
-## Thank you
-We're done!
+### Demo
+
+---
+
+### next week
+backend vulnerability
+* sql injection 
+* serverside template injection
+* file uploads
+
+---
+
+## thanks!
+that's all :)
