@@ -42,10 +42,20 @@ outputs: ["Reveal"]
 
 ---
 
+### why is this dangerous?
+most tags aren't really concerning (`<b>`, `<h1>`), but some can be
+* `<form>`
+* `<iframe>`
+* `<script>`
+* `<img>`
+
+---
+
 ### Know your tags
 * Some are paired `<div></div>`
 * Some aren't `<img src=.../>`
-* what goes in here? `<script>...</script>`
+
+> just google what they do/how to use them
 
 {{% /section %}}
 
@@ -119,21 +129,27 @@ const a = '<user_input>'
 
 ---
 
-## CSRF
 {{% section %}}
 
+## CSRF
+cross-site request forgery
+
+---
+
 ### What is it?
-* Cross-site request forgery
-* Trick a user into performing an unintended action
-    * e.g. make them authorize a bank transaction
-    * e.g. make them change their email/password
+* trick a user into performing an unintended action
+    * make them authorize a bank transaction
+    * make them change their email/password
+    * (if they're admin) probably even worse stuff
 
 ---
 
 ### examples
 
-```
-<form method="POST">
+```html
+<a href="http://bank.com/send?to=hacker&amount=10000">Click me!</a>
+
+<img src="http://bank.com/send?to=hacker&amount=1000">
 ```
 
 ---
@@ -146,7 +162,7 @@ const a = '<user_input>'
 
 ## Click-jacking
 {{% section %}}
-* A fake form sitting under a real form
+A fake form sitting on top of/below a real form
 
 * if you try to interact with the fake form, you'll accidentally interact with the real one. 
 
@@ -160,11 +176,20 @@ const a = '<user_input>'
 
 ---
 
+### Practice
+* [portswigger labs](https://portswigger.net/web-security/all-labs)
+* [ringerzer0](https://ringzer0ctf.com/challenges)
+* [juice shop](https://owasp.org/www-project-juice-shop/)
+
+---
+
 ### next week
 backend vulnerability
 * sql injection 
+* command injection
 * serverside template injection
 * file uploads
+* serverside request forgery (SSRF)
 
 ---
 
