@@ -131,6 +131,75 @@ const a = '<user_input>'
 
 {{% section %}}
 
+## Mitigating XSS
+
+---
+
+### Basic WAF stuff
+* *Sanitisation*: stripping out unsafe tags/attributes
+    * &lt;script&gt;alert(1)&lt;script&gt; &rarr; alert(1)  
+* *Encoding*: escaping control characters
+    * <> &rarr; \&lt;\&gt;
+* *Validation*: allow/block-listing of content
+    * block requests if you detect bad content
+
+---
+
+### Don't use raw user input
+* `.innerHTML` treats content as HTML (control)
+    * use `.innerText` which treats it as data
+
+* sanitize your input with a library (DOMPurify???)
+
+* don't write vanilla JS, use a framework.
+    * again, even if you use a framework, make sure the functions you're using sanitize the input
+
+---
+
+### Breaking mitigations
+* Content stripped/blocked
+    * embed dummy characters: `<SCRscriptIPT>`
+    * use alternating case: `<ScRiPt>`
+    * different tag `<img onerror=...>`
+    * different event handler `<body onload=...>`
+
+[here's a couple more](https://github.com/payloadbox/xss-payload-list)
+
+---
+
+## CSP
+* Limits where you can load content from, e.g.
+    * only scripts from local scripts
+    * only images from `example.com/path`
+
+* only elements with a certain nonce value
+
+* generally blocks iframes, inline scripts, `eval()`
+
+* basically it's kinda smurfing, it's hard to bypass
+
+---
+
+### Where is it defined
+* HTTP header
+    * `Content-Security-Policy: ???-src <directive>`
+
+* Or in a tag
+    * `<meta http-equiv="Content-Security-Policy" content="???-src <directive>">`
+    * though not as powerful
+
+---
+
+### How to break it?
+* Corrupting the HTTP header (response splitting?)
+* Overwriting the `<meta>` tag?
+
+{{% /section %}}
+
+---
+
+{{% section %}}
+
 ## CSRF
 cross-site request forgery
 
@@ -155,6 +224,47 @@ cross-site request forgery
 ---
 
 ### Demo!
+
+---
+
+{{% /section %}}
+
+---
+
+{{% section %}}
+
+## Mitigating CSRF
+
+---
+
+### CSRF Tokens
+
+Supply a single-use 'nonce' value.
+
+* When the page is loaded, generate the nonce
+* When a request is made, it must include the nonce
+* It'll be stored as a: cookie, header, `<input>`
+
+---
+
+### CSRF Mitigations
+* CSRF Tokens, a nonce value supplied as input
+* Randomly generated when the page is loaded
+    * stored as a cookie, header, `<input>`
+* When a request is made, backend verifies the nonce
+
+---
+
+## Quick demo
+
+---
+
+### Breaking mitigations
+
+* Bad programming, they might be doing it wrong
+    * Re-use a previous token (if it doesn't expire)
+    * Create your own?
+    * They might not even check it.
 
 {{% /section %}}
 
