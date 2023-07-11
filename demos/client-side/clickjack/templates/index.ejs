@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="css/tacit-css.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <title>Cool book store</title>
+  </head>
+  <body>
+    <h1 style="margin-top:10px; text-align: center;">Cool book store</h1>
+    <% if (!is_valid) { %>
+      <div style="margin-bottom: 20px; text-align: center;">You must be <a href="login">logged in</a> to make a purchase.</div>
+    <% } %>
+    <section id="movie-data">
+      <img src="images/fortnite.jpeg"/>
+      <div id="movie-details">
+        <b>Title:</b> Official Fortnite Battle Royale Survival Guide<br/>
+        <b>Year:</b> 1984<br/>
+        <b>Author:</b> Ninja<br/>
+        <b>Country:</b> United States<br/>
+        <br/>
+        <b>Blurb:</b> idk, I'm not going to try that hard for the joke<br/>
+        <br/>
+        <form method="post" action="purchase">
+          <button type="submit">Purchase ($5,000,000)</button>
+          <p style="color: red;"><%= typeof success !== 'undefined' ? 'Ty for the money.' : ''%></p>
+        </form> 
+      </div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+iframe {
+    position: relative;
+    opacity: 0.0;
+    width: 800px;
+    height: 900px;
+    top: 250px;
+    left: -275px;
+    z-index: 2;
+    padding-left: 80px;
+}
+
+body>div {
+    position:absolute;
+    z-index:1;
+}
+
+body>div>button {
+    margin-left:100px;
+}
