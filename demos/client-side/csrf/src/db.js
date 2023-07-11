@@ -1,5 +1,5 @@
 const db = [
-	{ username: 'melon', password: 'password', balance: 500 },
+	{ username: 'hacker', password: 'password', balance: 500 },
 	{ username: 'admin', password: 'admin', balance: 500 }
 ];
 
