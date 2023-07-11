@@ -160,12 +160,20 @@ cross-site request forgery
 
 ---
 
-## Click-jacking
 {{% section %}}
+
+## click-jacking
+
+---
+
+### what is it?
 A fake form sitting on top of/below a real form
 
 * if you try to interact with the fake form, you'll accidentally interact with the real one. 
 
+---
+
+### where could it come from?
 * This could be either local, or external
     * local: same form switch confirm/cancel buttons
     * external: an invisible iframe with a higher z-index
@@ -173,6 +181,8 @@ A fake form sitting on top of/below a real form
 ---
 
 ### Demo
+
+{{% /section %}}
 
 ---
 
