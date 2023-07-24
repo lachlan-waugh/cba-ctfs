@@ -9,8 +9,8 @@ outputs: ["Reveal"]
 ---
 
 {{< slide class="center" >}}
-# {{ replace .Name "-" " " | title }}
-## TODO
+# TODO
+## {{ replace .Name "-" " " | title }}
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Week03: ??"
+title: "week03: serverside"
 layout: "bundle"
 outputs: ["Reveal"]
 ---
@@ -9,8 +9,8 @@ outputs: ["Reveal"]
 ---
 
 {{< slide class="center" >}}
-# Week03
-## TODO
+# server-side exploitation
+## week03
 
 ---
 
