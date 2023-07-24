@@ -9,8 +9,8 @@ outputs: ["Reveal"]
 ---
 
 {{< slide class="center" >}}
-# week01
-## what is a ctf && recon 
+# what is a ctf && recon 
+## week01
 
 ---
 

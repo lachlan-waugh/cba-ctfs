@@ -9,8 +9,8 @@ outputs: ["Reveal"]
 ---
 
 {{< slide class="center" >}}
-# week02
-### client-side exploitation
+## client-side exploitation
+## week02
 
 ---
 
