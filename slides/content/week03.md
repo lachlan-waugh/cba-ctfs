@@ -25,6 +25,11 @@ outputs: ["Reveal"]
 
 ---
 
+### housekeeping 
+did anyone try out any of the challenges? how did you go?
+
+---
+
 {{% section %}}
 
 ## what will we cover this session
@@ -225,9 +230,15 @@ what if we tricked the template rendering into thinking our user-supplied conten
 
 ---
 
+### suggested challenges
+* TODO
+
+---
+
 ### next week
-?
-* ?
+binary exploitation
+* programming logic errors
+* buffer overflows (maybe? idk)
 
 ---
 
