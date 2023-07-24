@@ -15,7 +15,7 @@ outputs: ["Reveal"]
 ---
 
 ## disclaimer
-* many of the tools and techniques discussed in these sessions could be used against real websites/applications
+* many of the tools and techniques discussed in these sessions could be used against real applications
 * don't do that
 
 ---
