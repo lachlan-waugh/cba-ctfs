@@ -28,7 +28,7 @@ outputs: ["Reveal"]
 ## Client-side injection
 * HTML Injection
 * XSS
-* CSRF\
+* CSRF
 * Clickjacking
 
 ---

@@ -36,17 +36,18 @@ did anyone try out any of the challenges? how did you go?
 * SQLi
 * SSTI
 * SSRF
-* File uploads
+* LFI
 
 {{% /section %}}
 
 ---
 
-## SQL
-
 {{% section %}}
-> Structured Query Language
-* SQLite, PostgreSQL, MySQL, MSSQL Server
+
+## SQL
+Structured Query Language
+
+* e.g. SQLite, PostgreSQL, MySQL, MSSQL Server
 
 ---
 
@@ -92,9 +93,9 @@ Queries >
 | admin	| admin	|   | 1 | blog1 | melon |   | admin | admin |
 | melon	| water	|   | 2 | blog2 | admin |   | melon | water |
 |=======|=======|   | 3 | blog3 | admin |   | blog1 | melon |
-		    |===|=======|=======|   | blog2 | admin |
-		 		    	    | blog3 | admin |
-      users		   blogs	    |=======|=======|
+		            |===|=======|=======|   | blog2 | admin |
+		 		                     	    | blog3 | admin |
+      users		            blogs   	    |=======|=======|
 ```
 
 ---
@@ -108,11 +109,11 @@ Queries >
 
 ---
 
-
-## SQLi
 {{% section %}}
 
-### SQL Injection
+## SQLi
+SQL Injection
+
 * *TLDR*: blindly trusting user input is bad
 
 * What if we injected control characters which changed how the database interprets the query? e.g. inject our own `UNIONs/WHEREs/etc`
@@ -149,11 +150,9 @@ SELECT * FROM users WHERE user = '' OR 1=1 --'and password = '...'
   * find out the tables? (database schema)
   * include that table with a `UNION`
 
-
 ---
 
-# SQLi Demo
-> A basic login form
+## [Demo](https://github.com/lachlan-waugh/cba/tree/main/demos/server-side/sqli)
 
 {{% /section %}}
 
@@ -162,7 +161,8 @@ SELECT * FROM users WHERE user = '' OR 1=1 --'and password = '...'
 {{% section %}}
 
 ## SSTI
-### Server-side template injection
+Server-side template injection
+
 Templating engines (eg. Jinja2, Pug) use templates to inject code and variables into static files
 
 ---
@@ -193,13 +193,13 @@ render_template("index.html", name="melon", time=datetime.utcnow)
 ### how to exploit this?
 what if we tricked the template rendering into thinking our user-supplied content was code?
 
-* if our username was `{{7*7}}`, it might be rendered as 49
+* if our username was `{{7*7}}`, it would evaluated to 49
 
-* Jinja2: `{{`\<CODE HERE\>`}}` e.g. `{{7*7}}` => `49`
+* Jinja2: `{{`\<CODE HERE\>`}}` e.g. `{{ 'A'*3 }}` => `AAA`
 
 ---
 
-## [Demo](https://github.com/lachlan-waugh/6443/tree/main/demos/server-side-injection/ssti)
+## [Demo](https://github.com/lachlan-waugh/cba/tree/main/demos/server-side/ssti)
 
 {{% /section %}}
 
@@ -209,9 +209,15 @@ what if we tricked the template rendering into thinking our user-supplied conten
 {{% section %}}
 
 ### Server-side request forgery
-* Trick a server into doing stuff it doesn't intend to
-* Consider `HAAS`, we can't access `KB`, but `HAAS` could, and we can send requests through `HAAS`
-* What if we could access other internal services through `HAAS`, which aren't expecting it
+Trick a server into doing stuff it doesn't intend to
+
+* Consider a website that has a database in the backend
+* You can access the website, that website can access it's database, but you can't access the database directly. 
+* What if we tricked the website into making a request to that database when it doesn't intend to?
+
+---
+
+![](/assets/img/week03/ssrf.png)
 
 ---
 
@@ -224,7 +230,33 @@ what if we tricked the template rendering into thinking our user-supplied conten
 
 ---
 
-## [Demo](https://github.com/lachlan-waugh/6443/tree/main/demos/server-side-injection/ssrf)
+## [Demo](https://github.com/lachlan-waugh/cba/tree/main/demos/server-side/ssrf)
+
+{{% /section %}}
+
+---
+
+{{% /section %}}
+
+### LFI
+Local File Inclusion
+
+* Essentially tricking a server to include a local file in it's output
+* Think about SSRF, where we tricked the server into downloading content from something running it's network
+* What if instead, we told it do download a local file?
+
+---
+
+### Directory traversal
+* If you can download a file from the server from a certain location, e.g. `https://website.com/files/file1`
+* You could try to download files from other locations e.g. `https://website.com/files/../../../../other/file`
+
+> `..` refers to the parent directory, so we're navigating up the file system to find other files hosted locally
+
+---
+
+### Other methods
+* TODO
 
 {{% /section %}}
 
