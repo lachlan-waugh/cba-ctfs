@@ -249,21 +249,27 @@ Local File Inclusion
 
 ### Directory traversal
 * If you can download a file from the server from a certain location, e.g. `https://website.com/files/file1`
-* You could try to download files from other locations e.g. `https://website.com/files/../../../../other/file`
+* You could try to access files from other locations e.g. `https://website.com/files/../../../../other/file`
 
 > `..` refers to the parent directory, so we're navigating up the file system to find other files hosted locally
 
 ---
 
-### Other methods
-* TODO
+### Idk, something else
+* When making a network request (think back to SSRF), we might provide a url e.g. `https://website.com`
+* `https://` is the scheme and tells the server to access it over the internet (basically)
+* `file://` is another scheme, telling the server to instead look at the local file system
+* give it `file:///path/to/some/file`
+
+> the `/proc/self/` directory refers to the current process, you can use this to disclose information about the currently running process (environment variables, current path, etc)
 
 {{% /section %}}
 
 ---
 
 ### suggested challenges
-* TODO
+* [picoctf](https://play.picoctf.org/practice?category=1&page=1) (look at web exploitation)
+* [overthewire natas](https://overthewire.org/wargames/natas/)
 
 ---
 
