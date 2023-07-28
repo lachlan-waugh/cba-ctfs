@@ -211,8 +211,8 @@ what if we tricked the template rendering into thinking our user-supplied conten
 ### Server-side request forgery
 Trick a server into doing stuff it doesn't intend to
 
-* Consider a website that has a database in the backend
-* You can access the website, that website can access it's database, but you can't access the database directly. 
+* Consider a website w/ a database in the backend
+* You can access the website, website can access the database, but you can't access the database directly. 
 * What if we tricked the website into making a request to that database when it doesn't intend to?
 
 ---
@@ -236,32 +236,42 @@ Trick a server into doing stuff it doesn't intend to
 
 ---
 
-{{% /section %}}
+{{% section %}}
 
 ### LFI
 Local File Inclusion
 
-* Essentially tricking a server to include a local file in it's output
-* Think about SSRF, where we tricked the server into downloading content from something running it's network
+* Tricking a server to include a local file in it's output
+* In SSRF we tricked the server into downloading content from something running in it's network
 * What if instead, we told it do download a local file?
 
 ---
 
 ### Directory traversal
-* If you can download a file from the server from a certain location, e.g. `https://website.com/files/file1`
-* You could try to access files from other locations e.g. `https://website.com/files/../../../../other/file`
+* If you can download a file from the server from a certain location, e.g.:
+    * `https://website.com/files/file1`
+
+* You could try access a file from other locations:
+    * `https://website.com/files/../../../../other/file`
 
 > `..` refers to the parent directory, so we're navigating up the file system to find other files hosted locally
 
 ---
 
 ### Idk, something else
-* When making a network request (think back to SSRF), we might provide a url e.g. `https://website.com`
-* `https://` is the scheme and tells the server to access it over the internet (basically)
-* `file://` is another scheme, telling the server to instead look at the local file system
-* give it `file:///path/to/some/file`
+* When making a request (think back to SSRF), we provide a url/uri e.g. `https://website.com`
+    * `https://` is the scheme and tells the server to access it over the internet (basically)
+    * `file://` is another scheme, telling the server to instead look at the local file system
+    * give it `file:///path/to/some/file`
 
-> the `/proc/self/` directory refers to the current process, you can use this to disclose information about the currently running process (environment variables, current path, etc)
+---
+
+### Something to note
+> the `/proc/self/` directory contains information about the currently running process, you can use this to disclose information: e.g. environment variables, current path, etc
+
+---
+
+## [Demo](https://github.com/lachlan-waugh/cba/tree/main/demos/server-side/lfi)
 
 {{% /section %}}
 

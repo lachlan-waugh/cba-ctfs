@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; }
+    form { border: 3px solid #f1f1f1; }
+
+    input[type=text], input[type=password] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #04AA6D;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: black 1px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover  { opacity: 0.8; }
+    .hidden       { display: none; }
+    .container    { padding: 16px; }
+    .grid-container {
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      grid-gap: 7px;
+    }
+  </style>
+</head>
+<body>
+  <h2>SQLi demo</h2>
+
+  <div id="err-ctr" class="hidden">
+    <p><b style="color: red">ERROR: </b><a id="err-msg">asd</a></p>
+  </div>
+
+  <form method="POST">
+    <div class="container">
+      <label for="user"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="user" id="user" required>
+
+      <label for="pass"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="pass" id="pass" required>
+        
+      <div class="grid-container">
+        <button type="submit" class="btn1">Login </br>(basic)</button>
+        <button type="submit" class="btn2">Login </br>(brackets)</button>
+        <button type="submit" class="btn3">Login </br>(no OR)</button>
+        <button type="submit" class="btn4">Login </br>(special)</button>
+      </div>
+    </div>
+  </form>
+
+  <script>
+    const handle_login = (btn) => async (event) => {
+      event.preventDefault();
+
+      const result = await fetch(`/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          user: document.querySelector('#user').value,
+          pass: document.querySelector('#pass').value,
+          method: btn
+        })
+      }).then((res) => res.json());
+
+      if (result.success) {
+        document.cookie = `token=${result.data}`;
+        window.location = '/';
+      } else {
+        document.querySelector('#err-ctr').classList.remove('hidden');
+        document.querySelector('#err-msg').innerText = result.data;
+      }
+    }
+
+    document.querySelector('form').addEventListener('submit', (event) => event.preventDefault());
+    document.querySelector('.btn1').addEventListener('click', handle_login('btn1'));
+    document.querySelector('.btn2').addEventListener('click', handle_login('btn2'));
+    document.querySelector('.btn3').addEventListener('click', handle_login('btn3'));
+    document.querySelector('.btn4').addEventListener('click', handle_login('btn4'));
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+.wrapper {
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 20px;
+}
+.profile-pic {
+    height: 400px;
+    width: 400px;
+    border-color: gray;
+    border-style: solid;
+  }
+  
+  ::-webkit-input-placeholder {
+    text-align: center;
+  }
+  
+  :-moz-placeholder {
+    text-align: center;
+  }
+  
+  ::-moz-placeholder {
+    text-align: center;
+  }
+  
+  :-ms-input-placeholder {
+    text-align: center;
+  }
