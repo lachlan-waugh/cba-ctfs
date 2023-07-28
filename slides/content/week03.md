@@ -212,7 +212,7 @@ what if we tricked the template rendering into thinking our user-supplied conten
 Trick a server into doing stuff it doesn't intend to
 
 * Consider a website w/ a database in the backend
-* You can access the website, website can access the database, but you can't access the database directly. 
+* You can access the website, website can access the database, but you can't access the database. 
 * What if we tricked the website into making a request to that database when it doesn't intend to?
 
 ---
