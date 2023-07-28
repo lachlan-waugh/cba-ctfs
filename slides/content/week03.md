@@ -212,7 +212,9 @@ what if we tricked the template rendering into thinking our user-supplied conten
 Trick a server into doing stuff it doesn't intend to
 
 * Consider a website w/ a database in the backend
+
 * You can access the website, website can access the database, but you can't access the database. 
+
 * What if we tricked the website into making a request to that database when it doesn't intend to?
 
 ---
@@ -223,6 +225,7 @@ Trick a server into doing stuff it doesn't intend to
 
 ### Exploitation
 * Internal services might (often will) be less secure than externally facing ones
+
 * What can we do?
   * Retrieve/disclose information (ssi/lfi)
   * Remote code execution / Reverse shells?
@@ -242,7 +245,9 @@ Trick a server into doing stuff it doesn't intend to
 Local File Inclusion
 
 * Tricking a server to include a local file in it's output
+
 * In SSRF we tricked the server into downloading content from something running in it's network
+
 * What if instead, we told it do download a local file?
 
 ---
