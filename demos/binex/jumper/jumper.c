@@ -6,9 +6,9 @@ void deprecated() {
     system("/bin/whoami");
 }
 
-void win(void) {
-    system("/bin/sh");
-}
+// void win(void) {
+//   system("/bin/sh");
+// }
 
 void pwn(void) {
     char input[16];

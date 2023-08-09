@@ -9,7 +9,7 @@ int main(void) {
   int success = 0;
 
   printf("Enter your password: ");
-  gets(input);
+  fgets(input, 100, stdin);
 
   if (strcmp("secretpassword123", input) == 0) {
     fail = success = 1;
