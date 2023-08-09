@@ -7,7 +7,7 @@
 &nbsp;
 
 ## resources
-* [tooling](resources/tooling)
+* [binary exploitation](resources/binex)
 
 &nbsp;
 
