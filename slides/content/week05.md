@@ -73,6 +73,22 @@ outputs: ["Reveal"]
 
 ---
 
+### 
+* a bit different to what has been covered before
+* dfir is more situation-based, and covers more of the defensive side.
+
+---
+
+### what might you do
+generally it's malware analysis
+
+* finding command and control (c2) traffic
+* breach detection
+* finding what was stolen
+* finding patient zero
+
+---
+
 {{% section %}}
 
 ## Network forensics
@@ -154,6 +170,11 @@ each packet will be tied to a "conversation"
 * wierd IPs being communicated with
 * files being downloaded/uploaded
 * you can look for communicaion made at the same as evidence you found
+
+---
+
+### if you find something sus
+> a good place to go is [virustotal](https://www.virustotal.com/gui/)
 
 ---
 
