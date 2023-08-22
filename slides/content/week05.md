@@ -25,15 +25,13 @@ outputs: ["Reveal"]
 
 ---
 
-{{% section %}}
-
 ## what will we cover this session
 * hash cracking
 * network packet analysis
 * drive analysis
 * memory analysis
 
-{{% /section %}}
+{{% section %}}
 
 ---
 
