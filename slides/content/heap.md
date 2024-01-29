@@ -1,25 +1,48 @@
 ---
-title: "Heap"
+title: "heap"
 layout: "bundle"
 outputs: ["Reveal"]
 ---
 
-## We'll get started at ??:05
-
----
 
 {{< slide class="center" >}}
-# Heap
-### T12A COMP1234 
+## heap exploitation
+### lunch & learn
 
 ---
 
-## Lecture review
+### overview
+* what is a heap
+* malloc basics
+* use after free
+* double free
+* applications
+
+---
+
 {{% section %}}
+
+
 
 {{% /section %}}
 
 ---
 
-## Thank you
-We're done!
+
+{{% section %}}
+
+
+
+{{% /section %}}
+
+---
+
+{{% section %}}
+
+
+
+{{% /section %}}
+
+---
+
+### questions?
