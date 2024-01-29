@@ -6,7 +6,7 @@ outputs: ["Reveal"]
 
 {{< slide class="center" >}}
 ## rootkits
-### lunch && learn 
+### lunch & learn
 
 ---
 
@@ -20,9 +20,13 @@ outputs: ["Reveal"]
 ---
 
 ### what is a rootkit
-* ~~exploitation/exercising a vulnerability~~
-* ~~a program to get root~~
-* post exploitation tool for persistence and stealth
+* ~~exploitation/exercising a vulnerability~~\*
+* ~~a program to get root~~\*
+* a post exploitation tool for:
+    * persistence, and
+    * stealth
+
+> \* not always at least
 
 ---
 
@@ -42,8 +46,20 @@ you've
     * hiding processes/files/network activity
     * cleaning logs
     * evading detection
+    * e.g. hiding other malware
 
 {{% /section %}}
+
+---
+
+### how do rootkits work?
+
+* you are the admin/superuser/root
+* you can do anything
+* **hooking functions**
+    * appending additional functionality
+    * not replacing it
+* the operating system is just a program
 
 ---
 
@@ -110,8 +126,9 @@ kernel is the most privileged part of an OS
 * userland we can't access hardware
     * we don't modify the pixels when calling `print()`
     * we can't just directly read the harddrive
+* we tell the kernel to do this via syscalls
 
-> we tell the kernel to do this via syscalls
+> syscalls are the eyes of the application
 
 ---
 
@@ -119,7 +136,19 @@ kernel is the most privileged part of an OS
 
 ![](/assets/img/rootkits/syscall.png)
 
+{{% /section %}}
+
 ---
+
+### kernelland kits
+
+* two main types
+    * hooking (static)
+    * modules (dynamic)
+
+---
+
+{{% section %}}
 
 ### hooking
 every userland program uses syscalls
@@ -138,8 +167,10 @@ that's the hard part
 ---
 
 ### still kinda bad
-* AV could detect the system call table changes
-* or that the system call itself is changing
+* AV could detect
+    * the system call table changes
+    * or that the system call itself is changing
+    * or that the address of the syscall is abnormal
 
 ---
 
@@ -150,7 +181,14 @@ interrupts are how the system goes from user to kernel-mode
 * page faults
 * errors (divide-by-zero)
 
-> syscalls are the eyes of the application
+{{% /section %}}
+
+---
+
+{{% section %}}
+
+### modules
+
 
 {{% /section %}}
 
@@ -158,7 +196,57 @@ interrupts are how the system goes from user to kernel-mode
 
 {{% section %}}
 
-### kernelland kits
-TODO
+### detections
+
+---
+
+### syscall hooking
+pretty easy to detect
+
+|  syscall  | function * |
+|-----------|------------|
+| sys_write | 0xFFABCDEF |
+| sys_read  | 0xAAAB0122 |
+| sys_open  | 0xFFABCE10 |
+
+---
+
+### library hooking
+```bash
+# 6pm
+cat /bin/ls | sha256sum
+a6f7b874ea69329372ad75353314d7bcacd8c0be365023dab195bcac015d6009
+
+# 7pm
+cat /bin/ls | sha256sum
+7aad4dc6e4d99b28d4857b4e06f7522a6aba48999a63ed850621dbbf89050185
+```
+
+> but I didn't update ls?
+
+---
+
+### why is it hard
+performance
+
+* detections for the kernel require kernel-code
+* detections are really slow
+    * do you verify every syscall?
+    * every page fault?
+* any AV would need to run as root
+
+---
 
 {{% /section %}}
+
+---
+
+### even scarier versions of rootkits
+* hypervisor rootkits (sits above the os)
+    * really bad for cloud computing
+* BIOS rootkits
+* Memory hooking
+
+---
+
+### Any questions?
