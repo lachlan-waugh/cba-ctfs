@@ -1,5 +1,7 @@
 ## slides
 * [rootkits](rootkits)
+* [heap](heap)
+* [dependencies](dependencies)
 
 &nbsp;
 
