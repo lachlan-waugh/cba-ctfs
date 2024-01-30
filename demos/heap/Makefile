@@ -1,5 +1,5 @@
 CC         := gcc
-CFLAGS     := -ggdb -O0 -std=gnu99 -m32 -z relro -z now
+CFLAGS     := -ggdb -O0 -std=gnu99 -m32 -z relro -z now -no-pie
 INTEL_ASM  := -masm=intel
 
 all: clean build

