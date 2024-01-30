@@ -4,8 +4,9 @@ layout: "bundle"
 outputs: ["Reveal"]
 ---
 
+
 {{< slide class="center" >}}
-## allocator exploitation
+## heap exploitation
 ### lunch & learn
 
 ---
@@ -19,42 +20,13 @@ outputs: ["Reveal"]
 
 ---
 
-{{% section %}}
-
 ### what is the heap
-* section of memory for
-    * long living stuff
-    * stuff you don't know the size of at compile time
+section of memory for long living stuff
+or stuff you don't know the size of at compile time
 
-* stack is used for short lived stuff (e.g. local variables for a function)
+e.g. a python array
 
----
-
-### memory stuff
-
-<img src="/assets/img/heap/memory.png" width="50%"/>
-
----
-
-### when are they used
-```C
-int do_stuff(void) {
-    int i = 1;                  // stored on the stack
-    int j = malloc(sizeof(int)) // stored on the heap
-    // i disappears at the end of the do stuff function
-    // j doesn't, it needs to be explicitly free()'d
-}
-```
-&nbsp;
-
-> also in python
-
-```python
-i = 0   # stored on stack
-j = []  # stored on heap 
-```
-
-{{% /section %}}
+stack is used for short lived stuff (e.g. local variables for a function)
 
 ---
 
@@ -143,20 +115,6 @@ linked lists of freed chunks
 
 ---
 
-## heap overflow
-if you wrote `A` x `8` + `B` x `12` into a chunk of size `4`
-
-```C
-[ 000000F ] >
-[ AAAAAAA ] > // chunk 1 (in use)
-[ AAAAAAA ] >
-[ BBBBBBB ] }
-[ BBBBBBB ] } // chunk 2 (free)
-[ BBBBBBB ] }
-```
-
----
-
 ## use after free
 free doesn't actually NULL out the reference
 
@@ -201,26 +159,6 @@ malloc(...)     // bin: chunk -> chunk -> chunk -> ...
 
 ## demo
 
----
-
-### realism
-a struct with a function pointer isn't that realistic, but..
-
-```C
-struct user_t {
-    char *name;
-    int level;
-}
-
-void set_name(struct user_t *user) {
-    // ...
-    fgets(user->name, 100, stdin);
-    // ...
-}
-```
-
-> arbitary writes
-
 {{% /section %}}
 
 ---
@@ -238,16 +176,6 @@ void set_name(struct user_t *user) {
 > uhh a lot more
 
 {{% /section %}}
-
----
-
-### relevance in other languages
-
-* [UAF in Python](https://pwn.win/2022/05/11/python-buffered-reader.html)
-* [Double free in Chrome](https://github.com/advisories/GHSA-524r-c4hc-2m74)
-* [UAF in Golang](https://github.com/golang/go/issues/35777)
-
-> python is just fancy C
 
 ---
 
