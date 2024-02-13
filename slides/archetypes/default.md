@@ -1,16 +1,15 @@
----
-title: "{{ replace .Name '-' ' ' | title }}: ??"
+title: "{{ replace .Name "-" " " | title }}"
 layout: "bundle"
 outputs: ["Reveal"]
 ---
 
-## We'll get started at 13:05
+## We'll get started at ??:05
 
 ---
 
 {{< slide class="center" >}}
-# TODO
 ## {{ replace .Name "-" " " | title }}
+### Lunch and Learn
 
 ---
 
@@ -25,10 +24,13 @@ outputs: ["Reveal"]
 
 ---
 
-{{% section %}}
-
 ## what will we cover this session
 * ?
+
+---
+
+## STUFF
+{{% section %}}
 
 {{% /section %}}
 
@@ -40,5 +42,5 @@ outputs: ["Reveal"]
 
 ---
 
-## thanks!
-that's all :)
+## Thank you
+We're done!

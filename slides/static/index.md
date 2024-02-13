@@ -1,4 +1,11 @@
-## slides
+### lunch and learns
+* [rootkits](rootkits)
+* [heap](heap)
+* [dependencies](dependencies)
+
+&nbsp;
+
+## ctf presentations
 * [week-01](week01)
 * [week-02](week02)
 * [week-03](week03)
